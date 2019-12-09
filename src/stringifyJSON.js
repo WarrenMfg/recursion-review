@@ -7,8 +7,6 @@ var stringifyJSON = function(obj) {
   let string = '';
 
 
-
-
   if (typeof obj === 'number') {
     return '' + obj;
   }
@@ -18,12 +16,16 @@ var stringifyJSON = function(obj) {
   if (typeof obj === 'boolean') {
     return '' + obj;
   }
-  // if Array.isArray
-  //for loop
-
-
-
-
+  if (typeof obj === 'string') {
+    return '' + obj;
+  }
+  if (Array.isArray(obj)) {
+    var arr = [];
+    for (let i = 0; i < obj.length; i++) {
+      arr.push(stringifyJSON(obj[i]));
+    }
+    return arr;
+  }
   // if typeof obj === 'object'
   //for in loop
 
